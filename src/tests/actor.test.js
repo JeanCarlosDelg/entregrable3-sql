@@ -3,13 +3,13 @@ const app = require('../app')
 
 let id;
 
-test('GET /actors debe traer todos los actores', async() => {
+test('GET /actors It must get all actors', async() => {
   const res = await request(app).get('/actors')
   expect(res.status).toBe(200)
   expect(res.body).toBeInstanceOf(Array)
 });
 
-test('POST /actors debe crear un actor', async() => {
+test('POST /actors It must create actor', async() => {
   const newActors = {
     firstName: 'Jean',
     lastName: 'Delgado',
@@ -24,7 +24,7 @@ test('POST /actors debe crear un actor', async() => {
   expect(res.body.firstName).toBe(newActors.firstName)
 });
 
-test('PUT /actors/:id debe de actualizar un actor', async() => {
+test('PUT /actors/:id It must update actor', async() => {
   const updateActors = {
     firstName: 'JeanUpdate'
   }
@@ -33,7 +33,7 @@ test('PUT /actors/:id debe de actualizar un actor', async() => {
   expect(res.body.firstName).toBe(updateActors.firstName)
 });
 
-test('DELETE /actors/:id debe eliminar un genero', async() => {
+test('DELETE /actors/:id It must delete actor', async() => {
   const res = await request(app).delete(`/actors/${id}`)
   expect(res.status).toBe(204)
 })

@@ -6,13 +6,13 @@ const Actors = require('../models/Actors');
 
 let id;
 
-test('GET /movies debe traer todos los generos', async() => {
+test('GET /movies It must get all movies', async() => {
   const res = await request(app).get('/movies')
   expect(res.status).toBe(200)
   expect(res.body).toBeInstanceOf(Array)
 });
 
-test('POST /movies debe crear un genero', async() => {
+test('POST /movies It must create movie', async() => {
   const newMovies = {
     name: "Lucifer",
     image: 'prueba',
@@ -26,7 +26,7 @@ test('POST /movies debe crear un genero', async() => {
   expect(res.body.name).toBe(newMovies.name)
 });
 
-test('PUT /movies/:id debe de actualizar un genero', async() => {
+test('PUT /movies/:id It must update movie', async() => {
   const updateMovies = {
     name: 'LuciferUpdate'
   }
@@ -35,7 +35,7 @@ test('PUT /movies/:id debe de actualizar un genero', async() => {
   expect(res.body.name).toBe(updateMovies.name)
 });
 
-test('POST /movies/:id/genres', async () => {
+test('POST /movies/:id/genres It must insert genres in movie', async () => {
   const genres = await Genres.create({
     name: 'terror'
   })
@@ -48,7 +48,7 @@ test('POST /movies/:id/genres', async () => {
   expect(res.body.length).toBe(1);
 });
 
-test('POST /movies/:id/directors', async () => {
+test('POST /movies/:id/directors It must insert directors in movie', async () => {
   const director = await Directors.create({
     firstName: "Jean",
     lastName: "Delgado",
@@ -65,7 +65,7 @@ test('POST /movies/:id/directors', async () => {
   expect(res.body.length).toBe(1);
 });
 
-test('POST /movies/:id/actors', async () => {
+test('POST /movies/:id/actors It must insert actors in movie', async () => {
   const actor = await Actors.create({
     firstName: 'Jean',
     lastName: 'Delgado',
@@ -82,7 +82,7 @@ test('POST /movies/:id/actors', async () => {
   expect(res.body.length).toBe(1);
 });
 
-test('DELETE /movies/:id debe eliminar un genero', async() => {
+test('DELETE /movies/:id It must delete movie', async() => {
   const res = await request(app).delete(`/movies/${id}`)
   expect(res.status).toBe(204)
 })
